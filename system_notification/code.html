@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#93000a",
+            "on-tertiary-fixed": "#410005",
+            "tertiary-fixed-dim": "#ffb3af",
+            "inverse-on-surface": "#303032",
+            "on-primary-fixed": "#000965",
+            "on-tertiary-container": "#fffaff",
+            "surface-container-low": "#1b1c1d",
+            "on-secondary": "#2e3039",
+            "surface": "#121315",
+            "on-tertiary-fixed-variant": "#8e101c",
+            "surface-container": "#1f2021",
+            "on-surface-variant": "#c6c5d5",
+            "on-error": "#690005",
+            "primary-fixed": "#dfe0ff",
+            "error": "#ffb4ab",
+            "secondary": "#c5c6d1",
+            "on-secondary-fixed-variant": "#444650",
+            "outline": "#908f9e",
+            "surface-tint": "#bdc2ff",
+            "background": "#121315",
+            "on-secondary-container": "#b3b4bf",
+            "outline-variant": "#454652",
+            "on-background": "#e3e2e3",
+            "on-primary-container": "#fdfaff",
+            "on-secondary-fixed": "#191b23",
+            "on-surface": "#e3e2e3",
+            "surface-bright": "#38393a",
+            "tertiary-container": "#ce4244",
+            "on-primary-fixed-variant": "#2e3aa2",
+            "surface-container-lowest": "#0d0e0f",
+            "secondary-container": "#444650",
+            "tertiary-fixed": "#ffdad7",
+            "on-primary": "#121f8b",
+            "on-error-container": "#ffdad6",
+            "primary-container": "#5e6ad2",
+            "surface-dim": "#121315",
+            "primary": "#bdc2ff",
+            "surface-variant": "#343536",
+            "primary-fixed-dim": "#bdc2ff",
+            "inverse-surface": "#e3e2e3",
+            "inverse-primary": "#4854bb",
+            "on-tertiary": "#68000e",
+            "secondary-fixed": "#e1e2ed",
+            "tertiary": "#ffb3af",
+            "secondary-fixed-dim": "#c5c6d1",
+            "surface-container-highest": "#343536",
+            "surface-container-high": "#292a2b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body { background-color: #08090a; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .custom-shadow {
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+    }
+    .inter-alt {
+      font-feature-settings: 'cv01' 1, 'ss03' 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex items-center justify-center min-h-screen p-6 inter-alt">
+<!-- Android Style Notification Player Card -->
+<div class="w-full max-w-md bg-surface-container-high custom-shadow rounded-[28px] overflow-hidden p-4 flex items-center gap-4 group">
+<!-- Left: Album Art Section -->
+<div class="relative flex-shrink-0">
+<img alt="Album Artwork" class="w-20 h-20 rounded-xl object-cover" data-alt="Abstract vibrant synthwave album cover with neon geometric shapes and deep purple and blue cinematic lighting textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAueUNuHYLNC18c6WCEINI1_HMbW5VR038c8v9_CLsIztgv0Xny0hIZvkCQHyNyQl9Gtt-p1aDCTtWbuFU9AQvM8VmRs-c7UaV8FBL-VYz9XVmTFeYOPBVrgPBp0ZzXH-r_HdXSYZTzeUmVtO1YgFYS7Vc0axCOAdB-W9liciKYGb_7aewTZNJVeMhHw5dUT6j5oDeDNcWdqCHwGpBzhtq0DlQOT4_CY_S4Ir2z_zb64i-LhwtpXwDtFajcQhK71aorBC5sMa_DjnI"/>
+<!-- App Icon Overlay -->
+<div class="absolute -bottom-1 -right-1 bg-surface-container-highest rounded-full p-1 border border-white/10">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="library_music">library_music</span>
+</div>
+</div>
+<!-- Center-Right: Content and Controls -->
+<div class="flex-grow flex flex-col justify-between h-20 min-w-0">
+<!-- Song Metadata -->
+<div class="flex flex-col">
+<div class="flex justify-between items-start">
+<h3 class="text-on-surface font-[590] text-sm truncate pr-2 tracking-tight">After Hours</h3>
+<span class="material-symbols-outlined text-secondary text-sm" data-icon="close">close</span>
+</div>
+<p class="text-secondary text-xs font-[400] opacity-80 truncate">The Weeknd</p>
+</div>
+<!-- Player Controls -->
+<div class="flex items-center justify-between mt-auto">
+<!-- Progress Indicator (Simplified for Notification Style) -->
+<div class="flex-grow mr-6">
+<div class="h-1 w-full bg-white/10 rounded-full relative overflow-hidden">
+<div class="absolute top-0 left-0 h-full w-[45%] bg-primary rounded-full"></div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-4">
+<button aria-label="Previous" class="text-on-surface-variant hover:text-on-surface active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined text-[22px]" data-icon="skip_previous" style="font-variation-settings: 'FILL' 1;">skip_previous</span>
+</button>
+<button aria-label="Play/Pause" class="bg-primary-container text-on-primary-container w-9 h-9 flex items-center justify-center rounded-full active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-[20px]" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<button aria-label="Next" class="text-on-surface-variant hover:text-on-surface active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined text-[22px]" data-icon="skip_next" style="font-variation-settings: 'FILL' 1;">skip_next</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Note: This UI follows the "Digital Surgeon" precision rules with no explicit borders, using surface contrast and tonal depth. -->
+</body></html>

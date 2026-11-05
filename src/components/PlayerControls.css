@@ -1,0 +1,146 @@
+.player-controls-container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(72px + env(safe-area-inset-bottom));
+  z-index: 45;
+  min-height: 86px;
+  padding: 0.65rem 0.75rem;
+  background: rgba(15, 16, 17, 0.92);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.progress-container {
+  display: grid;
+  grid-template-columns: 42px 1fr 42px;
+  gap: 0.55rem;
+  align-items: center;
+  margin-bottom: 0.55rem;
+}
+
+.time-text {
+  color: rgba(197, 198, 209, 0.58);
+  font-size: 0.66rem;
+}
+
+.time-text:last-child {
+  text-align: right;
+}
+
+.scrubber {
+  width: 100%;
+}
+
+.controls-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(8rem, 0.7fr);
+  align-items: center;
+  gap: 1rem;
+  width: min(100%, 960px);
+  margin: 0 auto;
+}
+
+.track-info {
+  min-width: 0;
+  border: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: inherit;
+  background: transparent;
+  text-align: left;
+}
+
+.album-art {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: var(--surface-high);
+}
+
+.album-art.placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--primary);
+  font-weight: 590;
+}
+
+.track-text {
+  min-width: 0;
+}
+
+.player-controls-container .track-title {
+  font-size: 0.95rem;
+  font-weight: 590;
+}
+
+.player-controls-container .track-artist {
+  font-size: 0.75rem;
+}
+
+.playback-buttons,
+.volume-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.play-pause {
+  width: 50px;
+  height: 50px;
+}
+
+.play-icon {
+  margin-left: 2px;
+}
+
+.volume-controls {
+  justify-content: flex-end;
+  gap: 0.7rem;
+  color: var(--text-muted);
+}
+
+.volume-slider {
+  width: min(120px, 100%);
+}
+
+@media (max-width: 760px) {
+  .player-controls-container {
+    min-height: 72px;
+    padding: 0.45rem 0.5rem;
+  }
+
+  .progress-container {
+    grid-template-columns: 1fr;
+    margin-bottom: 0.4rem;
+  }
+
+  .time-text {
+    display: none;
+  }
+
+  .controls-main {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.55rem;
+  }
+
+  .volume-controls {
+    display: none;
+  }
+
+  .playback-buttons .ghost {
+    display: none;
+  }
+
+  .album-art {
+    width: 42px;
+    height: 42px;
+    flex-basis: 42px;
+  }
+}

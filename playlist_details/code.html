@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Playlist Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&amp;family=Berkeley+Mono&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error-container": "#93000a",
+            "on-tertiary-fixed": "#410005",
+            "tertiary-fixed-dim": "#ffb3af",
+            "inverse-on-surface": "#303032",
+            "on-primary-fixed": "#000965",
+            "on-tertiary-container": "#fffaff",
+            "surface-container-low": "#1b1c1d",
+            "on-secondary": "#2e3039",
+            "surface": "#121315",
+            "on-tertiary-fixed-variant": "#8e101c",
+            "surface-container": "#1f2021",
+            "on-surface-variant": "#c6c5d5",
+            "on-error": "#690005",
+            "primary-fixed": "#dfe0ff",
+            "error": "#ffb4ab",
+            "secondary": "#c5c6d1",
+            "on-secondary-fixed-variant": "#444650",
+            "outline": "#908f9e",
+            "surface-tint": "#bdc2ff",
+            "background": "#121315",
+            "on-secondary-container": "#b3b4bf",
+            "outline-variant": "#454652",
+            "on-background": "#e3e2e3",
+            "on-primary-container": "#fdfaff",
+            "on-secondary-fixed": "#191b23",
+            "on-surface": "#e3e2e3",
+            "surface-bright": "#38393a",
+            "tertiary-container": "#ce4244",
+            "on-primary-fixed-variant": "#2e3aa2",
+            "surface-container-lowest": "#0d0e0f",
+            "secondary-container": "#444650",
+            "tertiary-fixed": "#ffdad7",
+            "on-primary": "#121f8b",
+            "on-error-container": "#ffdad6",
+            "primary-container": "#5e6ad2",
+            "surface-dim": "#121315",
+            "primary": "#bdc2ff",
+            "surface-variant": "#343536",
+            "primary-fixed-dim": "#bdc2ff",
+            "inverse-surface": "#e3e2e3",
+            "inverse-primary": "#4854bb",
+            "on-tertiary": "#68000e",
+            "secondary-fixed": "#e1e2ed",
+            "tertiary": "#ffb3af",
+            "secondary-fixed-dim": "#c5c6d1",
+            "surface-container-highest": "#343536",
+            "surface-container-high": "#292a2b"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "fontFamily": {
+            "headline": ["Inter"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #08090a;
+      color: #e3e2e3;
+      font-family: 'Inter', sans-serif;
+      font-feature-settings: "cv01", "ss03";
+    }
+    .mono { font-family: 'Berkeley Mono', monospace; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-nav {
+      background: rgba(15, 16, 17, 0.8);
+      backdrop-filter: blur(20px);
+    }
+    .mask-gradient {
+      mask-image: linear-gradient(to bottom, black 0%, black 80%, transparent 100%);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#08090a] min-h-screen pb-24">
+<!-- TopAppBar (Shared Component Logic) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 w-full bg-transparent">
+<div class="flex items-center gap-4">
+<button class="text-[#bdc2ff] hover:bg-white/5 transition-colors p-2 rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="text-lg font-[590] tracking-tight text-[#e3e2e3]">Library</h1>
+</div>
+<div class="flex items-center">
+<button class="text-[#bdc2ff] hover:bg-white/5 transition-colors p-2 rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</header>
+<main class="relative">
+<!-- Hero Section: Large Playlist Cover -->
+<section class="relative w-full aspect-square md:aspect-[21/9] overflow-hidden">
+<img class="w-full h-full object-cover brightness-75 grayscale-[0.2]" data-alt="Candid high-fashion portrait with deep blue and purple cinematic lighting, sharp focus, technical aesthetic, high contrast" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTW0rkE5jxDEIrfy2u8oUlCgb2YdWkIIWQt5770ODDoPyqHFEY7mAiB0N2J6VjGW1nbNzb0csc0K6C3olyLNhdgg-6qBW0l60QEw9Bh0X62853LCe-LJFDAX9uAd13d8E0vAWaqQ4bCZ7JHZAU_cVZ7G3PphYn9pnf-9Qq5dY1crfi065CNtX-u8CKpg9WZUa-4hXib5ChKVms-vBvYqUMGT6TJupzoLnS0YZnmIylJVsSGLysX6qPc-kRPrtr9UJEU1HbTvj9clw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#08090a] via-[#08090a]/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full px-6 pb-10 space-y-4">
+<div class="space-y-1">
+<p class="mono text-[10px] tracking-widest uppercase text-primary/60">Curated Collection</p>
+<h2 class="text-4xl md:text-6xl font-[590] tracking-tighter text-on-surface">Midnight Echoes</h2>
+<p class="text-secondary text-sm font-normal max-w-md opacity-80">A surgical precision blend of industrial techno and atmospheric ambient soundscapes.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-primary-container text-on-primary-container font-[590] active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span>Play</span>
+</button>
+<button class="flex items-center justify-center gap-2 px-8 py-3 rounded-full bg-white/5 border border-white/10 text-on-surface font-[510] hover:bg-white/10 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="shuffle">shuffle</span>
+<span>Shuffle</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Track List (RecyclerView Style) -->
+<section class="px-6 mt-4 space-y-1">
+<div class="flex justify-between items-center mb-6 px-2">
+<span class="mono text-xs text-secondary/50">24 TRACKS — 1H 42M</span>
+<button class="text-primary text-sm font-[510]">Download All</button>
+</div>
+<!-- Song Item 1 -->
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative w-12 h-12 rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Abstract geometric structure with neon blue accents and dark metallic textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKTPhHLqWmcR4hTXtIDiQUxYG7q7Znz2o0Vwg3iSwzz4Z89CqsHk3PxLjKnBHbThDLJj34hSCE1ij3-Nw_8tFDMSaHg3UTUdYWejKb9f-OfYPiqDV1k78llhfAIMStYcNZIxIODd6EKlT3aAUCyzvAXL22RB_mpEq-fQWJi7xMvtZpOQ1xF6jnoCiUgUFYTI7qioyLsb0kwnDGSHOK6ZBLMzmu03Ye9BlgFDsWYvt6y43cOmp69ciSidphaWczC_WaviL2LaJocqc"/>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface font-[510] leading-tight group-hover:text-primary transition-colors">Digital Autopsy</span>
+<span class="text-secondary text-sm">Carbon Based Lifeforms</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="mono text-xs text-secondary/40 hidden md:block">320kbps</span>
+<span class="mono text-sm text-secondary/60">05:24</span>
+<button class="text-secondary/40 hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Song Item 2 -->
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative w-12 h-12 rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Macro photography of liquid mercury ripples with purple reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPMfHhO_r7qQTo4rv159xQo_nSWIUxzQx528tXgDgEJnMAdX_A3G7gkGeenkuz8kq4Ra1moM6veiWE-_HlHCzhbXVmvM-SSl_d2pvda12LtWJ8_xmeD5BfCpINXkztyT4cURji7A9xOc2EpvxoJfalTb0EZj83iOjzFKYAGNl_fd8KkOr4c7nb-c4WxHBfejyQYhjVQ4IEndpfr7kk8m1FusFDxL5OyFQ8RAPZADGIj9PP6PX3W31fMB3eRx9IgGL3IIl9yp-ghpg"/>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface font-[510] leading-tight group-hover:text-primary transition-colors">Surgical Steel</span>
+<span class="text-secondary text-sm">Monolake</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="mono text-xs text-secondary/40 hidden md:block">24-bit</span>
+<span class="mono text-sm text-secondary/60">04:12</span>
+<button class="text-secondary/40 hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Song Item 3 -->
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative w-12 h-12 rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Dense server room with glowing blue fiber optic cables and dark hardware" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNIfpvdbFNN5I5ymKeLvF_nifl9jolbaOVi_38YH8H_fGfRIZ7yAxzn_ZIcZkOS6ukB1h7vY1GTjubv9vULwDtQqar3uWBk5iggX-jCFYnl_QyF2EzoeEdlrPrJmir6s-ACTbm8VvNMoB4HDT_weiBGRk6sa7-laSDkjj2WRQSWflO9H6k9FnjXaUdvxScA-ADRIl_8eFCsKeV5H-n-_YIblr-k_PyLIDyLE9vwYWdeBZvzfywPb1z7RjAgNERR8fxwNEiXlDqK1E"/>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface font-[510] leading-tight group-hover:text-primary transition-colors">Neural Bypass</span>
+<span class="text-secondary text-sm">Alva Noto</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="mono text-xs text-secondary/40 hidden md:block">320kbps</span>
+<span class="mono text-sm text-secondary/60">06:45</span>
+<button class="text-secondary/40 hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Song Item 4 (Active State Example) -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-white/5 transition-colors group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative w-12 h-12 rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Minimalist architectural void with sharp shadows and one sliver of bright light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaue5zux1ODqDPgwvw0KrSVeqe901ZmSAS9t8Ee3o4iM-ViI0EGA_qJrLAQxf2M8Rr1bNnUJ5utDe5qi3rCGBqiiRgD4biSXbHWB1H0q9F9DZsGq_0wlYA7bxbf5bxb8piRdB2tLU6-tv-xQoDCg07VhrG-rF1pvVGlLI9IgZU4UYN04Rzlqm0M9c8Kur7c8q_WlagjTK3A3aw9GkrpqWp9NsPfGbUrFYeRyZJf5oUfenYaJuyoSIry0b9C-Juj8wmlOPmCXSyWhk"/>
+<div class="absolute inset-0 bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="equalizer" style="font-variation-settings: 'FILL' 1;">equalizer</span>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="text-primary font-[590] leading-tight">Glitch Protocol</span>
+<span class="text-secondary text-sm">Ryoji Ikeda</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="mono text-xs text-primary/60 hidden md:block">ALAC</span>
+<span class="mono text-sm text-primary">03:59</span>
+<button class="text-primary/40 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Song Item 5 -->
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative w-12 h-12 rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Microchip circuit board close up with soft glowing traces and dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCFxt1kOkCZpA77BAvOOQQLuj264ITRHIrcCQvy6-jTm97v8M3D4IULNUYJwwNrHDjN4JN-gK8x9FdVWyHm1hfnK5qIt3PQghqBh6SEYWkFiCz3LSBwEJ3473ayo30Y1jtrOuIr0PLAS517IceVzpD8cc5201S5jFA416VpceCWhQI3zD5l885SRxOFpPN4WJTSqMYx91OV_7jJRESABR4tWomdPM0t1QtU0aVXwgzGOYQZfNYavhArxIdz5CJEXg3G9b-LdY_9ik"/>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface font-[510] leading-tight group-hover:text-primary transition-colors">Subsurface Scatter</span>
+<span class="text-secondary text-sm">Jon Hopkins</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="mono text-xs text-secondary/40 hidden md:block">320kbps</span>
+<span class="mono text-sm text-secondary/60">07:12</span>
+<button class="text-secondary/40 hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Song Item 6 -->
+<div class="flex items-center justify-between p-2 rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="relative w-12 h-12 rounded overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Abstract smoke plumes in dark space lit by violet and cyan lamps" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrXRfovgFNOkwptIQayiCR7zDH9qpZEYRjUX36rnIy5hjbs9MpYDLA6Y7eYfvWaARw55SKMFuPd06ZISTVOXs5duhH3wJSD4ho183TQwJp5kUm2WF67AnyCzJoeW_djWO-D2G4I3VHW-LTfiD3SzqPxM1tORbBD6FzmAJ415YN5qeNRFnPT0Vnm8al5HK9db9yuNN-Mtysc80X30GTsoXm_WmAOGDrxhQBxCQXIn2sBnlk5mVJYG0-zvUGQXYoMdEqoMbZMgBYhJg"/>
+</div>
+<div class="flex flex-col">
+<span class="text-on-surface font-[510] leading-tight group-hover:text-primary transition-colors">Kinetoscope</span>
+<span class="text-secondary text-sm">Floating Points</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<span class="mono text-xs text-secondary/40 hidden md:block">24-bit</span>
+<span class="mono text-sm text-secondary/60">04:50</span>
+<button class="text-secondary/40 hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Shared Component Execution) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pt-3 pb-6 px-4 bg-[#0f1011]/80 backdrop-blur-xl border-t border-white/[0.08] shadow-[0_-10px_30px_rgba(0,0,0,0.5)]">
+<!-- Home -->
+<div class="flex flex-col items-center justify-center text-[#c5c6d1] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Inter'] font-[510] text-[10px] tracking-wide">Home</span>
+</div>
+<!-- Search -->
+<div class="flex flex-col items-center justify-center text-[#c5c6d1] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-['Inter'] font-[510] text-[10px] tracking-wide">Search</span>
+</div>
+<!-- Library (Active) -->
+<div class="flex flex-col items-center justify-center text-[#bdc2ff] font-[590] active:scale-90 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="library_music" style="font-variation-settings: 'FILL' 1;">library_music</span>
+<span class="font-['Inter'] font-[510] text-[10px] tracking-wide">Library</span>
+</div>
+<!-- Premium -->
+<div class="flex flex-col items-center justify-center text-[#c5c6d1] opacity-60 hover:opacity-100 transition-opacity active:scale-90 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-['Inter'] font-[510] text-[10px] tracking-wide">Premium</span>
+</div>
+</nav>
+</body></html>
